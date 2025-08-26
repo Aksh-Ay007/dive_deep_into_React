@@ -704,20 +704,9 @@ const Body = () => {
   return (
     <div className="body">
       <div className="res-container">
-        <RestaurantCard resdata={list[0]} />
-        <RestaurantCard resdata={list[1]} />
-        <RestaurantCard resdata={list[2]} />
-        <RestaurantCard resdata={list[3]} />
-        <RestaurantCard resdata={list[4]} />
-        <RestaurantCard resdata={list[5]} />
-        <RestaurantCard resdata={list[6]} />
-        <RestaurantCard resdata={list[7]} />
-        <RestaurantCard resdata={list[8]} />
-        <RestaurantCard resdata={list[9]} />
-        <RestaurantCard resdata={list[10]} />
-        <RestaurantCard resdata={list[11]} />
-
-      
+        {list.map((restaurent,index) => (
+          <RestaurantCard key={restaurent.info.id ||index} resdata={restaurent} />
+        ))}
       </div>
     </div>
   );
