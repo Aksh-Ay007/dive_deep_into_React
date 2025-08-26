@@ -1,19 +1,14 @@
 body {
   background-color: black;
-  color: aliceblue;
+  color: red;
 }
 
 
-
-
-#parent{
-
-     border: solid 5px;
-
-  border-color: rgb(42, 165, 56);
-  color: rgb(12, 128, 29);
-}
-
-#child{
-   color: #ece8e8;
+.js{
+  color: blue;
+  background-color: chocolate;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
