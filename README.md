@@ -11,6 +11,7 @@ This project demonstrates how to use React's `createElement` API to build nested
 ## Custom React Setup
 
 Unlike projects created with the official `create-react-app` command, this setup is fully manual. You configured everything yourself:
+
 - Created your own HTML, CSS, and JS files.
 - Installed React and ReactDOM as dependencies.
 - Used Parcel as the bundler for fast development and optimized builds.
@@ -87,12 +88,20 @@ Feel free to fork the repository and submit pull requests. Suggestions and impro
 
 ---
 
-**Enjoy exploring React and see how fast modern web development can
-
-
-
-
+\*\*Enjoy exploring React and see how fast modern web development can
 
 //TODO:
 //!fdfds
-//*sdfsfd
+//\*sdfsfd
+
+2 type of export and import
+
+1-default export import
+---export default Componet
+---import component from 'path'
+
+2-named export import
+
+---export const Componet
+---import {component} from "path"
+   
