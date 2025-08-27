@@ -3,10 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
   background: #fff;
-  z-index: 100;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   padding: 10px 20px;
 }
@@ -36,6 +33,33 @@
   margin: 10px;
   cursor: pointer;
   transition: color 0.2s;
+}
+
+
+.btn {
+  margin: 10px;
+  padding: 8px 0;
+  background-color: #10b981;
+  color: #f3f3f3;
+  font-weight: bolder;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.13);
+  text-shadow: #333 0 1px 1px;
+  width: 110px;         /* Fixed width for consistency */
+  min-width: 90px;      /* Prevents shrinking too much */
+  max-width: 140px;     /* Prevents growing too much */
+  text-align: center;   /* Center the text */
+  transition: background 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover{
+
+    background: linear-gradient(135deg, #139e06, #07d33a);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+
 }
 
 .nav-items > ul > li:hover {
@@ -359,4 +383,76 @@
   outline: 2px solid #10b981;
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+
+
+/* Shimmer styles */
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin: 32px 0;
+}
+
+.shimmer-card {
+  width: 220px;
+  height: 220px;
+  background: #f6f7f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s;
+}
+
+.shimmer-img {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(90deg, #ececec 25%, #f3f3f3 50%, #ececec 75%);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  animation: shimmer 1.2s infinite linear;
+}
+
+.shimmer-line {
+  width: 80%;
+  height: 16px;
+  background: linear-gradient(90deg, #ececec 25%, #f3f3f3 50%, #ececec 75%);
+  border-radius: 6px;
+  margin-bottom: 10px;
+  animation: shimmer 1.2s infinite linear;
+}
+
+.shimmer-title {
+  width: 60%;
+  height: 18px;
+}
+
+.shimmer-subtitle {
+  width: 40%;
+  height: 14px;
+}
+
+.shimmer-info {
+  width: 50%;
+  height: 12px;
+  margin-bottom: 0;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -220px 0;
+  }
+  100% {
+    background-position: 220px 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
