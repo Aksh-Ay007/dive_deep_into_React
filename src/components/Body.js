@@ -2,12 +2,21 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import list from "../utills/mockData";
+import { Link } from "react-router-dom";
 
 const Body = () => {
-  const [resList, setResList] = useState([]); 
-  const [filterResList,setFlterResList]=useState([])
-  
-  const[searchText,setSearchText]=useState('')
+  const [resList, setResList] = useState([]);
+  const [filterResList, setFlterResList] = useState([]);
+
+  let {name,locality,areaName}=filterResList.filter((item)=>{
+    console.log(item,'ttefds');
+  })
+
+
+  console.log(resList,'final');
+
+
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +24,7 @@ const Body = () => {
         console.log("...fetching data");
 
         let data = await fetch(
-          "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=12.9352403&lng=77.624532&carousel=true&third_party_vendor=1"
+          "https://corsproxy.io/?https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=12.9352403&lng=77.624532&carousel=true&third_party_vendor=1"
         );
 
         const json = await data.json();
@@ -26,10 +35,10 @@ const Body = () => {
             ?.restaurants || list;
 
         setResList(restaurants);
-        setFlterResList(restaurants)
+        setFlterResList(restaurants);
       } catch (error) {
         setResList(list);
-        setFlterResList(list)
+        setFlterResList(list);
         console.log(error);
       }
     };
@@ -88,12 +97,24 @@ const Body = () => {
       </div>
 
       <div className="res-container">
-        {filterResList.map((restaurant, index) => (
-          <RestaurantCard
-            key={restaurant.info.id || index}
-            resdata={restaurant}
-          />
-        ))}
+        {filterResList.map((restaurant, index) => {
+        const   { name, locality, areaName, id } = restaurant.info;
+            const slug =
+              [name, locality, areaName]
+                .filter(Boolean) // remove undefined/null
+                .map((str) =>
+                  str
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, "-")
+                    .replace(/^-+|-+$/g, "")
+                ) // slugify
+                .join("-") + `-rest${id}`;
+return (
+  <Link to={`/restaurantMenu/${slug}`} key={id || index}>
+    <RestaurantCard resdata={restaurant} />
+  </Link>
+);
+})}
       </div>
     </div>
   );
